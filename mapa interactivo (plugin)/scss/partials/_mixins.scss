@@ -1,0 +1,108 @@
+/*
+*   Nombre: _mixins.scss
+*   Uso: Estilos prdefinidos
+*/
+
+
+// ---- Mixins predefinidos ----
+@mixin txt-normal($color: black) {
+  font-size: $font-titlesecond;
+  color: $color;
+}
+
+@mixin cta-blanco($size: 5px 10px, $border-radius: 20px) {
+  color: $color-textos !important;
+  background-color: white;
+  border: 2px solid $color-principal;
+  padding: $size;
+  border-radius: $border-radius;
+}
+
+@mixin cta-amarillo($size: 5px 10px, $border-radius: 20px) {
+  color: white;
+  background-color: $color-principal;
+  border: 2px solid $color-principal;
+  padding: $size;
+  border-radius: $border-radius;
+}
+
+@mixin listas {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 4rem;
+  padding-bottom: 20px;
+}
+
+@mixin item_listas {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+@mixin input-estilo {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: $radio-borde - 2px;
+  font-size: 16px;
+}
+
+@mixin circle($size, $color) {
+  width: $size;
+  height: $size;
+  background-color: $color;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.4s ease;
+  z-index: 2;
+}
+
+@mixin card-hover($border-color, $shadow-color: null) {
+  $final-shadow: if($shadow-color == null, rgba($border-color, 0.4), $shadow-color);
+  border-color: $border-color;
+  box-shadow: 0 0 15px $final-shadow;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+// ---- Mixins breakpoints ----
+
+@mixin media-sm {
+  @media (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin media-xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}

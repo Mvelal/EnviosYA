@@ -1,0 +1,539 @@
+/*
+*   Nombre: style.scss
+*   Uso: Todos los estilos de el plugin mapa interactivo
+*/
+
+
+// ---- Imports ----
+@import 'partials/variables';
+@import 'partials/mixins';
+
+
+
+// ---- body ----
+body {
+  font-family: "Poppins", Sans-serif;
+}
+
+
+
+// ---- Mapa Interactivo ----
+.mapa-interactivo {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  padding: 20px 0;
+  width: 100%;
+}
+
+.mapa-interactivo__contenedor {
+  height: 600px;
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 50px;
+}
+
+
+
+// ---- Filtros del Mapa ----
+.filtros{
+    margin-bottom: 20px;
+
+    &__lista{
+        @include listas;
+        
+        @include media-sm{
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+        }
+
+    }
+
+    &__item{
+        @include item_listas;
+
+        @include media-sm{
+          flex-basis: 0px;
+        }
+
+        label{
+          @include txt-normal;
+        }
+
+        select{
+            @include cta-blanco;
+            margin-top: 10px;
+        }
+        span{
+          text-align: start
+        }
+    }
+
+    &__submit{
+      @include cta-amarillo;
+      width: 100%;
+    }
+}
+
+.leaflet-popup-content-wrapper{
+  background-color: $color-principal!important;
+  border-radius: 20px;
+}
+
+
+
+// ---- Pop Up del mapa de informacion de los lugares ----
+.location-card {
+  font-family: "Poppins", Sans-serif;
+
+  &__image {
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    img {
+      box-shadow: -11px -7px 0px 0px white !important;
+      width: 80% !important;
+      display: block !important;
+      margin: 0 auto !important;
+    }
+  }
+
+  &__button {
+    @include cta-blanco($border-radius:10px);
+    display: block;
+    margin: 5px auto 0 auto; // centrado horizontal
+    text-align: center;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__price {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    white-space: nowrap;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    flex: 1;
+  }
+
+  &__description{
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+  }
+}
+
+
+
+// ---- Cartas de informacion de los lugares ----
+.eco-aventura-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  max-width: 850px;
+  width: 100%;
+
+  &__imagen-contenedor {
+    position: relative;
+    flex-shrink: 0;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 100%;
+      height: 100%;
+      background-color: #fdda24;
+      z-index: 1;
+    }
+
+    img {
+      position: relative;
+      width: 300px;
+      height: auto;
+      display: block;
+      z-index: 2;
+    }
+  }
+
+  &__texto-contenedor {
+    display: flex;
+    flex-direction: column;
+
+    &__descripcion {
+      margin: 0 0 1.5rem 0;
+      line-height: 1.6;
+      color: #666;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &__titulo {
+      margin: 0;
+      font-size: 2rem;
+      color: #333;
+      margin-block-end: 0px!important;
+    }
+
+    &__precio {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #555;
+      white-space: nowrap;
+      padding-left: 20px;
+    }
+  }
+
+  &__boton-info {
+    align-self: flex-start;
+    background-color: #fdda24;
+    color: #212529;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #e4c51f;
+    }
+  }
+
+  // Responsive
+  @include media-sm {
+    flex-direction: column;
+    padding: 20px;
+    gap: 0px;
+    margin-top: 50px;
+
+    &__header {
+      flex-direction: column;
+      align-items: center;
+      gap: 0px;
+    }
+
+    &__texto-contenedor {
+      align-items: center;
+      text-align: center;
+      
+      &__descripcion{
+        text-align: justify;
+      }
+    }
+
+    &__boton-info {
+      align-self: center;
+    }
+
+  }
+}
+
+
+
+// ---- Formulario Modal ----
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.6);
+    animation: fadeInModal 0.3s ease;
+
+    &--hidden {
+        display: none;
+    }
+
+    &__content {
+        position: relative;
+        width: 100%;
+        max-width: 650px;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: slideInModal 0.4s ease-out;
+    }
+
+    &__close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: #aaa;
+        font-size: 30px;
+        font-weight: bold;
+        border: none;
+        background: none;
+        cursor: pointer;
+        z-index: 10;
+        &:hover {
+            color: #333;
+        }
+    }
+}
+
+
+
+// ---- Formulario ----
+.form-steps {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: $radio-borde;
+
+  &__progress-bar {
+    @include flex-center;
+    margin-bottom: 30px;
+  }
+
+  &__indicator {
+    @include circle(30px, #e0e0e0);
+
+    &--active {
+      background-color: $color-principal;
+    }
+
+    &--completed {
+      background-color: $color-exito;
+    }
+  }
+
+  &__line {
+    flex-grow: 1;
+    height: 4px;
+    background-color: #e0e0e0;
+    margin: 0 -1px;
+  }
+
+  &__step {
+    display: none;
+
+    &--active {
+      display: block;
+      animation: fadeInStep 0.5s ease-out;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .selection-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .selection-card {
+    border: 2px solid #ddd;
+    border-radius: $radio-borde;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &__radio {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    img,
+    span {
+      pointer-events: none;
+    }
+
+    img {
+      max-width: 150px;
+      border-radius: $radio-borde - 4px;
+    }
+
+    span {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    &:hover {
+      border-color: $color-principal;
+      transform: translateY(-5px);
+    }
+
+    &.selected {
+      @include card-hover($color-exito);
+    }
+  }
+
+  .conditional-fields {
+    display: none;
+  }
+
+  #group-members-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .member-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: $radio-borde - 2px;
+
+    .form-steps__field {
+      flex-grow: 1;
+      margin-bottom: 0;
+    }
+  }
+
+  &__field {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input,
+    select,
+    textarea {
+      @include input-estilo;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+  &__button {
+    @include cta-amarillo(12px 25px, $radio-borde - 2px);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($color-principal, 10%);
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: #ccc;
+      }
+    }
+
+    &--previous {
+      background-color: $color-secundario;
+
+      &:hover {
+        background-color: darken($color-secundario, 10%);
+      }
+    }
+
+    &--add {
+      background-color: $color-secundario;
+      width: 100%;
+
+      &:hover {
+        background-color: darken($color-secundario, 10%);
+      }
+    }
+
+    &--remove {
+      background-color: $color-error;
+      padding: 8px 12px;
+      font-size: 14px;
+      flex-shrink: 0;
+
+      &:hover {
+        background-color: darken($color-error, 10%);
+      }
+    }
+  }
+
+  @include media-sm{
+    .selection-container{
+      flex-direction: column;
+    }
+
+    .member-row{
+      flex-direction: column;
+    }
+
+    &__button{
+      &--remove {
+        width: 20%;
+      }
+    }
+    
+  }
+  
+}
+
+
+
+// ---- Animaciones ----
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInModal {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInStep {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

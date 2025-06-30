@@ -1,0 +1,20 @@
+/*
+*   Nombre: _variables.scss
+*   Uso: Variables Globales para los estilos
+*/
+
+
+// ---- VARIABLES PRINCIPALES ----
+$color-principal: #FCBD0D;
+$color-secundario: #6c757d;
+$color-textos: black;
+$font-titlesecond: 18px;
+$color-exito: #28a745;
+$color-error: #dc3545;
+$radio-borde: 8px;
+
+
+// ---- BREAKPOINTS -----
+$breakpoint-sm: 768px;  // Teléfonos pequeños
+$breakpoint-lg: 1024px; // Laptops
+$breakpoint-xl: 1280px; // Escritorios grandes

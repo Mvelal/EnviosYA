@@ -1,0 +1,16 @@
+{
+  "name": "mapa-interactivo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "watch": "npx sass --watch scss:css --style=expanded",
+    "build": "npx sass scss/styles.scss css/styles.css --style=compressed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.89.2"
+  }
+}

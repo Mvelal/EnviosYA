@@ -1,0 +1,491 @@
+/*
+*   Nombre: style.scss
+*   Uso: Todos los estilos de el plugin mapa interactivo
+*/
+/*
+*   Nombre: _variables.scss
+*   Uso: Variables Globales para los estilos
+*/
+/*
+*   Nombre: _mixins.scss
+*   Uso: Estilos prdefinidos
+*/
+body {
+  font-family: "Poppins", Sans-serif;
+}
+
+.mapa-interactivo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.mapa-interactivo__contenedor {
+  height: 600px;
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+}
+
+.filtros {
+  margin-bottom: 20px;
+}
+.filtros__lista {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 4rem;
+  padding-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .filtros__lista {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+.filtros__item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .filtros__item {
+    flex-basis: 0px;
+  }
+}
+.filtros__item label {
+  font-size: 18px;
+  color: black;
+}
+.filtros__item select {
+  color: black !important;
+  background-color: white;
+  border: 2px solid #FCBD0D;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+.filtros__item span {
+  text-align: start;
+}
+.filtros__submit {
+  color: white;
+  background-color: #FCBD0D;
+  border: 2px solid #FCBD0D;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: #FCBD0D !important;
+  border-radius: 20px;
+}
+
+.location-card {
+  font-family: "Poppins", Sans-serif;
+}
+.location-card__image {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.location-card__image img {
+  box-shadow: -11px -7px 0px 0px white !important;
+  width: 80% !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+.location-card__button {
+  color: black !important;
+  background-color: white;
+  border: 2px solid #FCBD0D;
+  padding: 5px 10px;
+  border-radius: 10px;
+  display: block;
+  margin: 5px auto 0 auto;
+  text-align: center;
+}
+.location-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.location-card__price {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  white-space: nowrap;
+}
+.location-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+}
+.location-card__description {
+  margin-top: 5px !important;
+  margin-bottom: 10px !important;
+}
+
+.eco-aventura-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  max-width: 850px;
+  width: 100%;
+}
+.eco-aventura-card__imagen-contenedor {
+  position: relative;
+  flex-shrink: 0;
+}
+.eco-aventura-card__imagen-contenedor::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  background-color: #fdda24;
+  z-index: 1;
+}
+.eco-aventura-card__imagen-contenedor img {
+  position: relative;
+  width: 300px;
+  height: auto;
+  display: block;
+  z-index: 2;
+}
+.eco-aventura-card__texto-contenedor {
+  display: flex;
+  flex-direction: column;
+}
+.eco-aventura-card__texto-contenedor__descripcion {
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+  color: #666;
+}
+.eco-aventura-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.eco-aventura-card__header__titulo {
+  margin: 0;
+  font-size: 2rem;
+  color: #333;
+  margin-block-end: 0px !important;
+}
+.eco-aventura-card__header__precio {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #555;
+  white-space: nowrap;
+  padding-left: 20px;
+}
+.eco-aventura-card__boton-info {
+  align-self: flex-start;
+  background-color: #fdda24;
+  color: #212529;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.eco-aventura-card__boton-info:hover {
+  background-color: #e4c51f;
+}
+@media (max-width: 768px) {
+  .eco-aventura-card {
+    flex-direction: column;
+    padding: 20px;
+    gap: 0px;
+    margin-top: 50px;
+  }
+  .eco-aventura-card__header {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+  }
+  .eco-aventura-card__texto-contenedor {
+    align-items: center;
+    text-align: center;
+  }
+  .eco-aventura-card__texto-contenedor__descripcion {
+    text-align: justify;
+  }
+  .eco-aventura-card__boton-info {
+    align-self: center;
+  }
+}
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  animation: fadeInModal 0.3s ease;
+}
+.modal--hidden {
+  display: none;
+}
+.modal__content {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideInModal 0.4s ease-out;
+}
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #aaa;
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 10;
+}
+.modal__close:hover {
+  color: #333;
+}
+
+.form-steps {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+}
+.form-steps__progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.form-steps__indicator {
+  width: 30px;
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.4s ease;
+  z-index: 2;
+}
+.form-steps__indicator--active {
+  background-color: #FCBD0D;
+}
+.form-steps__indicator--completed {
+  background-color: #28a745;
+}
+.form-steps__line {
+  flex-grow: 1;
+  height: 4px;
+  background-color: #e0e0e0;
+  margin: 0 -1px;
+}
+.form-steps__step {
+  display: none;
+}
+.form-steps__step--active {
+  display: block;
+  animation: fadeInStep 0.5s ease-out;
+}
+.form-steps__title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.form-steps .selection-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+.form-steps .selection-card {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.form-steps .selection-card__radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.form-steps .selection-card img,
+.form-steps .selection-card span {
+  pointer-events: none;
+}
+.form-steps .selection-card img {
+  max-width: 150px;
+  border-radius: 4px;
+}
+.form-steps .selection-card span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.form-steps .selection-card:hover {
+  border-color: #FCBD0D;
+  transform: translateY(-5px);
+}
+.form-steps .selection-card.selected {
+  border-color: #28a745;
+  box-shadow: 0 0 15px rgba(40, 167, 69, 0.4);
+}
+.form-steps .conditional-fields {
+  display: none;
+}
+.form-steps #group-members-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.form-steps .member-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+.form-steps .member-row .form-steps__field {
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+.form-steps__field {
+  margin-bottom: 20px;
+}
+.form-steps__field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.form-steps__field input,
+.form-steps__field select,
+.form-steps__field textarea {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+.form-steps__nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.form-steps__button {
+  color: white;
+  background-color: #FCBD0D;
+  border: 2px solid #FCBD0D;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.form-steps__button:hover {
+  background-color: rgb(211.3795918367, 156.3510204082, 2.6204081633);
+}
+.form-steps__button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.form-steps__button:disabled:hover {
+  background-color: #ccc;
+}
+.form-steps__button--previous {
+  background-color: #6c757d;
+}
+.form-steps__button--previous:hover {
+  background-color: rgb(84.3605150215, 91.3905579399, 97.6394849785);
+}
+.form-steps__button--add {
+  background-color: #6c757d;
+  width: 100%;
+}
+.form-steps__button--add:hover {
+  background-color: rgb(84.3605150215, 91.3905579399, 97.6394849785);
+}
+.form-steps__button--remove {
+  background-color: #dc3545;
+  padding: 8px 12px;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.form-steps__button--remove:hover {
+  background-color: rgb(189.2151898734, 32.7848101266, 47.7721518987);
+}
+@media (max-width: 768px) {
+  .form-steps .selection-container {
+    flex-direction: column;
+  }
+  .form-steps .member-row {
+    flex-direction: column;
+  }
+  .form-steps__button--remove {
+    width: 20%;
+  }
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideInModal {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInStep {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
